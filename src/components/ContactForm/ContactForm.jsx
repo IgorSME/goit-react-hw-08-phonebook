@@ -31,7 +31,9 @@ export function ContactForm() {
     }
   };
   const addNewContact = () => {
-    if (contacts.find(elem => elem.name.toLowerCase() === name.toLowerCase())) {
+    if (
+      contacts?.find(elem => elem.name.toLowerCase() === name.toLowerCase())
+    ) {
       toast.warn(`${name} is alredy in contacts`);
 
       return;

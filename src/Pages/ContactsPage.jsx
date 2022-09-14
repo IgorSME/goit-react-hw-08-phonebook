@@ -3,7 +3,7 @@ import { ContactList } from '../components/ContactList/ContactList';
 import { Filter } from '../components/Filter/Filter';
 import { Container } from '../App.styled';
 
-export function ContactsPage() {
+export default function ContactsPage() {
   return (
     <>
       <Container>

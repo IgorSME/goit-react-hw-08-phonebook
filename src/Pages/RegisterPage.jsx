@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { registerUser } from 'Redux/Auth/authOperations';
+import Button from '@mui/material/Button';
 
-export function RegisterPage() {
+export default function RegisterPage() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,11 +34,11 @@ export function RegisterPage() {
     <div>
       <h1>Register Page</h1>
       <form onSubmit={handleSubmit} autoComplete="off">
-        <label htmlFor="">
+        <label>
           Name
           <input type="text" name="name" value={name} onChange={handleChange} />
         </label>
-        <label htmlFor="">
+        <label>
           Email
           <input
             type="email"
@@ -46,7 +47,7 @@ export function RegisterPage() {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="">
+        <label>
           Password
           <input
             type="password"
@@ -55,7 +56,7 @@ export function RegisterPage() {
             onChange={handleChange}
           />
         </label>
-        <button>Register</button>
+        <Button variant="contained">Register</Button>
       </form>
     </div>
   );

@@ -28,12 +28,12 @@ export function ContactList() {
     <>
       <Contacts>
         {filteredContacts ? (
-          filteredContacts?.map(({ id, name, phone }) => {
+          filteredContacts?.map(({ id, name, number }) => {
             return (
               <ContactListItem
                 key={id}
                 name={name}
-                number={phone}
+                number={number}
                 onClick={() => {
                   deleteContact(id);
                   toast.error(`${name} is delete`);

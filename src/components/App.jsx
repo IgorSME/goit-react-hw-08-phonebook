@@ -1,31 +1,69 @@
-// import { ContactForm } from './ContactForm/ContactForm';
-// import { ContactList } from './ContactList/ContactList';
-// import { Filter } from './Filter/Filter';
-// import { Container } from 'App.styled';
-
-import { ContactsPage } from 'Pages/ContactsPage';
-import { HomePage } from 'Pages/HomePage';
-import { LoginPage } from 'Pages/LoginPage';
-import { RegisterPage } from 'Pages/RegisterPage';
+// import { ContactsPage } from 'Pages/ContactsPage';
+// import { HomePage } from 'Pages/HomePage';
+// import { LoginPage } from 'Pages/LoginPage';
+// import { RegisterPage } from 'Pages/RegisterPage';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { fetchCurrentUser } from 'Redux/Auth/authOperations';
 import { Layout } from './Layout/Layout';
+import { lazy, useEffect } from 'react';
+import { PrivateRoute } from 'Routes/PrivateRoute';
+import { PublicRoute } from 'Routes/PublicRoute';
+import { getIsFetchCurrentUser } from 'Redux/selectors';
+
+const HomePage = lazy(() => import('../Pages/HomePage'));
+const ContactsPage = lazy(() => import('../Pages/ContactsPage'));
+const LoginPage = lazy(() => import('../Pages/LoginPage'));
+const RegisterPage = lazy(() => import('../Pages/RegisterPage'));
 
 export function App() {
+  const dispatch = useDispatch();
+  const isFetchCurrentUser = useSelector(getIsFetchCurrentUser);
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="contacts" element={<ContactsPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
-      </Route>
-    </Routes>
-    // <Container>
-    //   <h1>Phonebook</h1>
-    //   <ContactForm />
-    //   <h2>Contacts</h2>
-    //   <Filter />
-    //   <ContactList />
-    // </Container>
+    <>
+      {!isFetchCurrentUser && (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={
+                <PublicRoute>
+                  <HomePage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <PublicRoute restricted>
+                  <RegisterPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute restricted>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
+          </Route>
+        </Routes>
+      )}
+    </>
   );
 }
