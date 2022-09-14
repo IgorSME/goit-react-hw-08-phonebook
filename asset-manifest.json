@@ -1,13 +1,24 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.2c125458.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.35e6bccf.js",
+    "main.css": "/goit-react-hw-08-phonebook/static/css/main.7acaea2f.css",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.af1b5f75.js",
+    "static/js/562.11bb9e7b.chunk.js": "/goit-react-hw-08-phonebook/static/js/562.11bb9e7b.chunk.js",
+    "static/js/451.0106a2de.chunk.js": "/goit-react-hw-08-phonebook/static/js/451.0106a2de.chunk.js",
+    "static/js/319.3a4bebb8.chunk.js": "/goit-react-hw-08-phonebook/static/js/319.3a4bebb8.chunk.js",
+    "static/js/462.355275a8.chunk.js": "/goit-react-hw-08-phonebook/static/js/462.355275a8.chunk.js",
+    "static/css/544.fb68114e.chunk.css": "/goit-react-hw-08-phonebook/static/css/544.fb68114e.chunk.css",
+    "static/media/avatar.png": "/goit-react-hw-08-phonebook/static/media/avatar.447f893109e90229c542.png",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "main.2c125458.css.map": "/goit-react-hw-08-phonebook/static/css/main.2c125458.css.map",
-    "main.35e6bccf.js.map": "/goit-react-hw-08-phonebook/static/js/main.35e6bccf.js.map"
+    "main.7acaea2f.css.map": "/goit-react-hw-08-phonebook/static/css/main.7acaea2f.css.map",
+    "main.af1b5f75.js.map": "/goit-react-hw-08-phonebook/static/js/main.af1b5f75.js.map",
+    "562.11bb9e7b.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/562.11bb9e7b.chunk.js.map",
+    "451.0106a2de.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/451.0106a2de.chunk.js.map",
+    "319.3a4bebb8.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/319.3a4bebb8.chunk.js.map",
+    "462.355275a8.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/462.355275a8.chunk.js.map",
+    "544.fb68114e.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/544.fb68114e.chunk.css.map"
   },
   "entrypoints": [
-    "static/css/main.2c125458.css",
-    "static/js/main.35e6bccf.js"
+    "static/css/main.7acaea2f.css",
+    "static/js/main.af1b5f75.js"
   ]
 }
