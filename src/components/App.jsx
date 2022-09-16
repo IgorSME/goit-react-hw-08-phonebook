@@ -1,7 +1,3 @@
-// import { ContactsPage } from 'Pages/ContactsPage';
-// import { HomePage } from 'Pages/HomePage';
-// import { LoginPage } from 'Pages/LoginPage';
-// import { RegisterPage } from 'Pages/RegisterPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { fetchCurrentUser } from 'Redux/Auth/authOperations';

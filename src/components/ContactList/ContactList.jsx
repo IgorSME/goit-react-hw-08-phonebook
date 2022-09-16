@@ -1,19 +1,45 @@
-// import PropTypes from 'prop-types';
-import { ContactListItem } from '../ContactListItem/ContactListItem';
-import { Contacts } from './ContactList.styled';
+import Button from '@mui/material/Button';
+import { DataGrid } from '@mui/x-data-grid';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
-  useGetContactsQuery,
   useDeleteContactMutation,
+  useGetContactsQuery,
 } from 'Redux/contactsSlice';
 import { changeFilterValue } from 'Redux/filterSlice';
-import { toast } from 'react-toastify';
 
 export function ContactList() {
   const { data: contacts } = useGetContactsQuery();
   const [deleteContact] = useDeleteContactMutation();
-
   const value = useSelector(changeFilterValue);
+
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 130 },
+    { field: 'name', headerName: 'Name', width: 170 },
+    {
+      field: 'number',
+      headerName: 'Phone',
+      type: 'number',
+      width: 170,
+    },
+    {
+      field: 'Action',
+      renderCell: contact => {
+        return (
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              deleteContact(contact.id);
+              toast.error(`${contact.row.name} is delete`);
+            }}
+          >
+            Delete
+          </Button>
+        );
+      },
+    },
+  ];
 
   const getFilteredContacts = () => {
     const normalizedFilter = value.toLowerCase();
@@ -25,27 +51,25 @@ export function ContactList() {
   const filteredContacts = getFilteredContacts();
 
   return (
-    <>
-      <Contacts>
-        {filteredContacts ? (
-          filteredContacts?.map(({ id, name, number }) => {
-            return (
-              <ContactListItem
-                key={id}
-                name={name}
-                number={number}
-                onClick={() => {
-                  deleteContact(id);
-                  toast.error(`${name} is delete`);
-                }}
-              />
-            );
-          })
-        ) : (
-          <p>Loading...</p>
-        )}
-      </Contacts>
-      {contacts?.length === 0 && <p>Contacts List is empty</p>}
-    </>
+    <div
+      style={{
+        height: 400,
+        width: '100%',
+        marginTop: '5px',
+      }}
+    >
+      {filteredContacts ? (
+        <DataGrid
+          sx={{ borderBottom: 1 }}
+          rows={filteredContacts}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+        />
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
   );
 }

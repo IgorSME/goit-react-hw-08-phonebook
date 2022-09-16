@@ -1,6 +1,6 @@
+import TextField from '@mui/material/TextField';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter, changeFilterValue } from 'Redux/filterSlice';
-import { Label, Input } from '../ContactForm/ContactForm.styled';
 
 export function Filter() {
   const dispatch = useDispatch();
@@ -10,18 +10,14 @@ export function Filter() {
   };
 
   return (
-    <div>
-      <Label htmlFor="filter">Find contacts by name </Label>
-      <Input
-        type="text"
-        name="filter"
-        value={value}
-        onChange={onChangeFilter}
-      />
-    </div>
+    <TextField
+      id="filled-search"
+      label="Find contacts by name"
+      type="search"
+      variant="standard"
+      name="filter"
+      value={value}
+      onChange={onChangeFilter}
+    />
   );
 }
-// Filter.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };

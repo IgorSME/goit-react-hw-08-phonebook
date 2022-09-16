@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import PropTypes from 'prop-types';
-import { Form, Label, Input, Button } from './ContactForm.styled';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import { nanoid } from 'nanoid';
 import {
   useAddContactMutation,
@@ -54,29 +55,42 @@ export function ContactForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label htmlFor="name">Name </Label>
-      <Input
+    <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      textAlign="center"
+    >
+      <TextField
+        id="name"
+        label="Name"
+        variant="outlined"
         type="text"
         name="name"
         onChange={handleChange}
         value={name}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
-      <Label htmlFor="number">Number </Label>
-      <Input
+      <TextField
+        id="number"
+        label="Number"
+        variant="outlined"
         type="tel"
         name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
         value={number}
         onChange={handleChange}
       />
-      <Button type="submit">Add contact</Button>
+      <Button type="submit" variant="contained">
+        Add contact
+      </Button>
       <ToastContainer autoClose={2000} />
-    </Form>
+    </Box>
   );
 }
